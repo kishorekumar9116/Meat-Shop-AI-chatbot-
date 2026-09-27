@@ -1,0 +1,44 @@
+{
+  "shop_info": {
+    "name": "FreshMeat",
+    "address": "123 Main Street, Downtown",
+    "location": "Downtown area, next to the central plaza",
+    "opening_hours": "Monday to Sunday, 8:00 AM to 9:00 PM",
+    "contact_information": "Phone: 555-0198, Email: contact@freshmeat.com"
+  },
+  "chicken_products": {
+    "description": "Fresh and tender chicken.",
+    "items": ["Whole Chicken", "Chicken Breast", "Chicken Wings", "Minced Chicken (Keema)", "Chicken Legs"],
+    "availability": "Always in stock",
+    "prices": "Typically around $5/lb"
+  },
+  "mutton_products": {
+    "description": "High-quality goat and lamb mutton.",
+    "items": ["Curry Cut", "Minced Mutton (Keema)", "Mutton Chops", "Mutton Leg"],
+    "availability": "Fresh stock arrives every morning",
+    "prices": "Typically around $10/lb"
+  },
+  "fish_products": {
+    "description": "Freshly caught river and sea fish.",
+    "items": ["Rohu", "Catla", "Salmon", "Prawns", "Tilapia"],
+    "availability": "Varies by season and daily catch",
+    "prices": "Typically around $8/lb"
+  },
+  "other_meat_products": {
+    "description": "Other specialty meats.",
+    "items": ["Beef cuts", "Turkey"],
+    "availability": "Available on pre-order only",
+    "prices": "Market price"
+  },
+  "delivery_information": {
+    "details": "Free home delivery within 5 miles for orders over $20. Delivery takes 30-45 minutes."
+  },
+  "ordering_information": {
+    "details": "Customers can order via the website, our mobile app, or by calling 555-0198."
+  },
+  "frequently_asked_questions": [
+    { "question": "Are your meats Halal?", "answer": "Yes, all our chicken and mutton products are 100% Halal certified." },
+    { "question": "Do you sell marinated meats?", "answer": "Yes, we offer a variety of pre-marinated chicken and fish ready to cook." },
+    { "question": "Do you accept credit cards?", "answer": "Yes, we accept all major credit cards and digital wallets." }
+  ]
+}

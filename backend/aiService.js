@@ -1,22 +1,14 @@
+const { retrieveRelevantInfo } = require('./ragService');
 const OLLAMA_URL = 'http://localhost:11434';
 const MODEL = 'llama3.2';
 
 const SYSTEM_PROMPT = `You are a helpful, friendly, and knowledgeable assistant for "FreshMeat", a local meat shop.
-You can answer questions about:
-- Chicken (whole, breast, wings, minced, etc.)
-- Mutton (curry cut, minced, chops, etc.)
-- Fish (rohu, catla, salmon, prawns, etc.)
-- Meat varieties (goat, lamb, etc.)
-- Shop timings: Monday to Sunday, 8:00 AM to 9:00 PM.
-- Available products: Fresh and marinated meats.
-- Prices: Competitive daily prices. (Give typical estimates if asked: Chicken ~$5/lb, Mutton ~$10/lb, Fish ~$8/lb).
-- Delivery: Free home delivery within 5 miles for orders over $20. Delivery takes 30-45 minutes.
-- Location: 123 Main Street, Downtown.
-- Ordering process: Customers can order via the website or by calling 555-0198.
 
 IMPORTANT RULES:
-1. If a customer asks something outside of this information, you MUST clearly say that the information is unavailable.
-2. Keep your answers concise, polite, and beginner-friendly.`;
+1. You will be provided with specific "Retrieved Shop Information" based on the customer's question.
+2. You MUST prioritize and use ONLY the provided retrieved information to answer the question.
+3. If the retrieved information does not contain the answer, you MUST clearly say that you do not have that information (e.g., "I don't have that information right now, but you can call our shop at 555-0198!"). Do NOT invent or guess any answers.
+4. Keep your answers concise, polite, and beginner-friendly.`;
 
 async function checkOllamaHealth() {
   try {
@@ -28,7 +20,11 @@ async function checkOllamaHealth() {
 }
 
 async function generateChatResponse(userMessage) {
-  const prompt = `${SYSTEM_PROMPT}\n\nCustomer: ${userMessage}\nAssistant:`;
+  // RAG Step: Retrieve relevant shop data
+  const retrievedData = retrieveRelevantInfo(userMessage);
+
+  // RAG Step: Provide retrieved information to the LLM
+  const prompt = `${SYSTEM_PROMPT}\n\n=== RETRIEVED SHOP INFORMATION ===\n${retrievedData}\n==================================\n\nCustomer: ${userMessage}\nAssistant:`;
 
   try {
     const response = await fetch(`${OLLAMA_URL}/api/generate`, {
