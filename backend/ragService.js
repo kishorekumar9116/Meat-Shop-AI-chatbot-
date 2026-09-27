@@ -9,44 +9,35 @@ function retrieveRelevantInfo(userQuery) {
   const query = userQuery.toLowerCase();
   let relevantContext = [];
 
-  // Simple RAG-style keyword retrieval
-  // Identify relevant information based on customer question
-  if (query.match(/time|open|close|address|location|where|contact|phone|email/i)) {
+  // Match general shop details
+  if (query.match(/time|open|close|address|location|where|contact|phone|email|delivery/i)) {
     relevantContext.push(`Shop Information: ${JSON.stringify(kb.shop_info)}`);
   }
   
-  if (query.match(/chicken|poultry/i)) {
-    relevantContext.push(`Chicken Products: ${JSON.stringify(kb.chicken_products)}`);
+  // Match freshwater fishes (Katla, Rohu, Jilebi, Viraal, etc.)
+  if (query.match(/fish|meen|katla|kendai|rohu|mirgal|jilebi|viraal|keluthi|vilangu|dam|freshwater|aeri/i)) {
+    relevantContext.push(`Dam / Freshwater Fishes: ${JSON.stringify(kb.dam_freshwater_fishes)}`);
   }
   
-  if (query.match(/mutton|goat|lamb|keema/i)) {
-    relevantContext.push(`Mutton Products: ${JSON.stringify(kb.mutton_products)}`);
+  // Match sea fishes (Vanjaram, Vavval, Mathi, Nethili, Eral, Nandu, etc.)
+  if (query.match(/fish|meen|vanjaram|vavval|kanangeluthi|ayilai|mathi|chaalai|nethili|koduva|sheela|sankara|paarai|kaala|choorai|kanavai|eral|prawn|crab|nandu|squid|marine|sea|kadal/i)) {
+    relevantContext.push(`Sea / Marine Fishes: ${JSON.stringify(kb.sea_marine_fishes)}`);
   }
   
-  if (query.match(/fish|prawn|salmon|rohu|catla|seafood/i)) {
-    relevantContext.push(`Fish Products: ${JSON.stringify(kb.fish_products)}`);
+  // Match meats and poultry (Kozhi, Mutton, Aadu, Beef, Pork, Muttai, etc.)
+  if (query.match(/meat|chicken|mutton|kozhi|broiler|nattu|aadu|eeral|beef|pork|panri|duck|vaathu|quail|kaadai|egg|muttai|liver/i)) {
+    relevantContext.push(`Meat & Poultry: ${JSON.stringify(kb.other_non_veg_meat)}`);
   }
   
-  if (query.match(/other|beef|turkey/i)) {
-    relevantContext.push(`Other Meat Products: ${JSON.stringify(kb.other_meat_products)}`);
-  }
-  
-  if (query.match(/deliver|shipping|bring|home/i)) {
-    relevantContext.push(`Delivery Information: ${JSON.stringify(kb.delivery_information)}`);
-  }
-  
-  if (query.match(/order|buy|purchase/i)) {
-    relevantContext.push(`Ordering Information: ${JSON.stringify(kb.ordering_information)}`);
-  }
-  
-  if (query.match(/halal|marinat|card|pay|question|faq/i)) {
+  // Match FAQs
+  if (query.match(/faq|question|fresh/i)) {
     relevantContext.push(`Frequently Asked Questions: ${JSON.stringify(kb.frequently_asked_questions)}`);
   }
 
-  // If no specific category matched, provide general shop info and a list of available categories
+  // Fallback if nothing specific matched
   if (relevantContext.length === 0) {
     relevantContext.push(`Shop Information: ${JSON.stringify(kb.shop_info)}`);
-    relevantContext.push(`We sell: Chicken, Mutton, Fish, and Other Specialty Meats.`);
+    relevantContext.push(`Available Categories: Freshwater Fish (Katla, Jilebi, etc.), Sea Fish (Vanjaram, Nethili, Eral, etc.), and Meat/Poultry (Nattu Kozhi, Mutton, Beef, etc.).`);
   }
 
   return relevantContext.join('\n\n');

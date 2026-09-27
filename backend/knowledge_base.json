@@ -1,44 +1,54 @@
 {
   "shop_info": {
-    "name": "FreshMeat",
-    "address": "123 Main Street, Downtown",
-    "location": "Downtown area, next to the central plaza",
-    "opening_hours": "Monday to Sunday, 8:00 AM to 9:00 PM",
-    "contact_information": "Phone: 555-0198, Email: contact@freshmeat.com"
+    "name": "Karikada Bhai (FreshMeat Assistant)",
+    "address": "Local Market, Tamil Nadu",
+    "opening_hours": "Monday to Sunday, 6:00 AM to 9:00 PM",
+    "contact_information": "Phone: +91 98765 43210",
+    "delivery": "Door delivery available for nearby areas."
   },
-  "chicken_products": {
-    "description": "Fresh and tender chicken.",
-    "items": ["Whole Chicken", "Chicken Breast", "Chicken Wings", "Minced Chicken (Keema)", "Chicken Legs"],
-    "availability": "Always in stock",
-    "prices": "Typically around $5/lb"
-  },
-  "mutton_products": {
-    "description": "High-quality goat and lamb mutton.",
-    "items": ["Curry Cut", "Minced Mutton (Keema)", "Mutton Chops", "Mutton Leg"],
-    "availability": "Fresh stock arrives every morning",
-    "prices": "Typically around $10/lb"
-  },
-  "fish_products": {
-    "description": "Freshly caught river and sea fish.",
-    "items": ["Rohu", "Catla", "Salmon", "Prawns", "Tilapia"],
-    "availability": "Varies by season and daily catch",
-    "prices": "Typically around $8/lb"
-  },
-  "other_meat_products": {
-    "description": "Other specialty meats.",
-    "items": ["Beef cuts", "Turkey"],
-    "availability": "Available on pre-order only",
-    "prices": "Market price"
-  },
-  "delivery_information": {
-    "details": "Free home delivery within 5 miles for orders over $20. Delivery takes 30-45 minutes."
-  },
-  "ordering_information": {
-    "details": "Customers can order via the website, our mobile app, or by calling 555-0198."
-  },
+  "dam_freshwater_fishes": [
+    {"name": "Catla (Katla / Kendai)", "price_per_kg_inr": "₹180 - ₹240"},
+    {"name": "Rohu / Kannadi Kendai (Rohu)", "price_per_kg_inr": "₹170 - ₹220"},
+    {"name": "Mrigal (Mirgal)", "price_per_kg_inr": "₹160 - ₹210"},
+    {"name": "Tilapia (Jilebi Meen)", "price_per_kg_inr": "₹120 - ₹180"},
+    {"name": "Freshwater Murrel (Viraal)", "price_per_kg_inr": "₹450 - ₹650"},
+    {"name": "River Catfish (Keluthi)", "price_per_kg_inr": "₹180 - ₹260"},
+    {"name": "Common Carp (Satha Kendai)", "price_per_kg_inr": "₹140 - ₹190"},
+    {"name": "Freshwater Spiny Eel (Vilangu)", "price_per_kg_inr": "₹350 - ₹500"}
+  ],
+  "sea_marine_fishes": [
+    {"name": "Seer Fish (Vanjaram / Nei Meen)", "price_per_kg_inr": "₹950 - ₹1600"},
+    {"name": "White Pomfret (Vella Vavval)", "price_per_kg_inr": "₹750 - ₹1100"},
+    {"name": "Black Pomfret (Karuppu Vavval)", "price_per_kg_inr": "₹550 - ₹750"},
+    {"name": "Indian Mackerel (Kanangeluthi / Ayilai)", "price_per_kg_inr": "₹180 - ₹250"},
+    {"name": "Sardines (Mathi / Chaalai)", "price_per_kg_inr": "₹120 - ₹200"},
+    {"name": "Anchovy (Nethili)", "price_per_kg_inr": "₹220 - ₹320"},
+    {"name": "Asian Seabass (Koduva)", "price_per_kg_inr": "₹500 - ₹750"},
+    {"name": "Barracuda (Sheela / Seela)", "price_per_kg_inr": "₹350 - ₹500"},
+    {"name": "Red Snapper (Sankara)", "price_per_kg_inr": "₹280 - ₹420"},
+    {"name": "Trevally (Paarai)", "price_per_kg_inr": "₹350 - ₹550"},
+    {"name": "Threadfin (Kaala)", "price_per_kg_inr": "₹650 - ₹900"},
+    {"name": "Tuna (Choorai)", "price_per_kg_inr": "₹250 - ₹380"},
+    {"name": "Squid (Kanavai)", "price_per_kg_inr": "₹300 - ₹450"},
+    {"name": "Prawns (Eral)", "price_per_kg_inr": "₹350 - ₹650"},
+    {"name": "Crab (Nandu)", "price_per_kg_inr": "₹350 - ₹600"}
+  ],
+  "other_non_veg_meat": [
+    {"name": "Broiler Chicken (Broiler Kozhi - Skinless)", "price_per_kg_inr": "₹220 - ₹270"},
+    {"name": "Country Chicken (Nattu Kozhi)", "price_per_kg_inr": "₹400 - ₹550"},
+    {"name": "Boneless Chicken", "price_per_kg_inr": "₹320 - ₹380"},
+    {"name": "Goat Meat / Mutton (Aattuirachi - Bone-in)", "price_per_kg_inr": "₹800 - ₹950"},
+    {"name": "Boneless Mutton", "price_per_kg_inr": "₹1100 - ₹1350"},
+    {"name": "Mutton Liver (Aattu Eeral)", "price_per_kg_inr": "₹350 - ₹450"},
+    {"name": "Beef (Maattuirachi)", "price_per_kg_inr": "₹180 - ₹240"},
+    {"name": "Pork (Panri Irachi)", "price_per_kg_inr": "₹400 - ₹480"},
+    {"name": "Duck Meat (Vaathu Irachi)", "price_per_kg_inr": "₹260 - ₹350"},
+    {"name": "Quail Meat (Kaadai)", "price_per_kg_inr": "₹40 - ₹60 per piece"},
+    {"name": "Broiler Eggs (Pannai Muttai)", "price_per_kg_inr": "₹5.50 - ₹7.00 per piece"},
+    {"name": "Country Chicken Eggs (Nattu Kozhi Muttai)", "price_per_kg_inr": "₹10 - ₹14 per piece"}
+  ],
   "frequently_asked_questions": [
-    { "question": "Are your meats Halal?", "answer": "Yes, all our chicken and mutton products are 100% Halal certified." },
-    { "question": "Do you sell marinated meats?", "answer": "Yes, we offer a variety of pre-marinated chicken and fish ready to cook." },
-    { "question": "Do you accept credit cards?", "answer": "Yes, we accept all major credit cards and digital wallets." }
+    { "question": "Do you have fresh nattu kozhi?", "answer": "Yes, fresh Nattu Kozhi is available daily." },
+    { "question": "Is vanjaram fresh?", "answer": "Yes, Vanjaram (Seer Fish) fresh catch arrives every morning." }
   ]
 }
