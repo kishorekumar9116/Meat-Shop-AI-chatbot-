@@ -10,9 +10,14 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isListening, setIsListening] = useState(false);
-  const [voiceLang, setVoiceLang] = useState('en-US');
+  const [appLang, setAppLang] = useState('Auto');
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
+
+  const getVoiceLangCode = (lang) => {
+    if (lang === 'Tamil') return 'ta-IN';
+    return 'en-US'; // Default to English for Auto or English
+  };
 
   // Web Speech API for voice assistant
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -21,7 +26,7 @@ function App() {
   if (recognition) {
     recognition.continuous = false;
     recognition.interimResults = false;
-    recognition.lang = voiceLang;
+    recognition.lang = getVoiceLangCode(appLang);
 
     recognition.onresult = (event) => {
       const transcript = event.results[0][0].transcript;
@@ -72,7 +77,7 @@ function App() {
     // Inject initial greeting if this is the first message
     if (currentMessages.length === 0) {
       currentMessages = [
-        { role: 'assistant', content: 'Hello! Welcome to Karikadai. How can I assist you today?' }
+        { role: 'assistant', content: 'Hi, welcome to Karikadai' }
       ];
     }
 
@@ -89,7 +94,7 @@ function App() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ messages: newMessages }),
+        body: JSON.stringify({ messages: newMessages, preferredLanguage: appLang }),
       });
 
       const data = await response.json();
@@ -172,13 +177,13 @@ function App() {
         {/* Language Selector for Voice & App Preference */}
         <select 
           className="lang-select" 
-          value={voiceLang} 
-          onChange={(e) => setVoiceLang(e.target.value)}
-          title="Select Language for Voice Recognition"
+          value={appLang} 
+          onChange={(e) => setAppLang(e.target.value)}
+          title="Select Preferred Language"
         >
-          <option value="en-US">English</option>
-          <option value="ta-IN">Tamil</option>
-          <option value="hi-IN">Hindi</option>
+          <option value="Auto">Auto-Detect Language</option>
+          <option value="English">English</option>
+          <option value="Tamil">Tamil</option>
         </select>
 
         <div className="history-list">
@@ -202,7 +207,7 @@ function App() {
         {/* If chat is empty, show Claude-style centered greeting and input */}
         {messages.length === 0 ? (
           <div className="empty-state">
-            <h1 className="empty-greeting">Vanakam</h1>
+            <h1 className="empty-greeting">Vanakam 🙏</h1>
             {renderInputArea(false)}
           </div>
         ) : (

@@ -21,14 +21,14 @@ app.get('/api/health', async (req, res) => {
 // Chat endpoint
 app.post('/api/chat', async (req, res) => {
   try {
-    const { message, messages } = req.body;
+    const { message, messages, preferredLanguage } = req.body;
     
     if ((!message || typeof message !== 'string') && (!messages || !Array.isArray(messages))) {
       return res.status(400).json({ success: false, error: 'Invalid message format.' });
     }
 
     const currentMsg = message || (messages && messages.length > 0 ? messages[messages.length - 1].content : '');
-    const aiResponse = await generateChatResponse(currentMsg, messages || []);
+    const aiResponse = await generateChatResponse(currentMsg, messages || [], preferredLanguage || 'Auto');
     
     res.json({ success: true, response: aiResponse });
   } catch (error) {
